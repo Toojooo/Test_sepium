@@ -24,7 +24,7 @@ $result = pg_query($dbconn, $query);
 if ($result) {
     echo "Пользователь успешно создан.";
 } else {
-    echo "Ошибка при создании пользователя: " . pg_last_error($db);
+    echo "Ошибка при создании пользователя: " . pg_last_error($dbсoon);
 }
 
 // Закрытие соединения с базой данных
