@@ -1,14 +1,32 @@
-version: '3.7'
+version: '3.1'
 
 services:
   db:
-    image: postgres
-    restart: always
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_DB: DB_test
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: root
+    image: mysql:5.7
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test_app
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile # Убедитесь, что Dockerfile находится в корневой директории
+    depends_on:
+      - db
+    ports:
+      - "8000:80"
+    environment:
+      DB_HOST: db
+      DB_NAME: test_app
+      DB_USER: user
+      DB_PASSWORD: password
+
+volumes:
+  db_data:

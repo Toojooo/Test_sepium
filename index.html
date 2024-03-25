@@ -41,6 +41,27 @@
 </form>
 </div>
 
+<script>
+    document.getElementById('deleteForm').onsubmit = function(e) {
+        e.preventDefault();
+
+        var userId = document.getElementById('user_id1').value;
+        var formData = new FormData();
+        formData.append('user_id1', userId);
+
+        fetch('DB/Delete.php', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('userList').innerHTML = html;
+            })
+            .catch(error => console.error('Error:', error));
+    };
+</script>
+
+
 
 </body>
 </html>

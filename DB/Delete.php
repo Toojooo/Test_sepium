@@ -13,6 +13,8 @@ $user_id1 = pg_escape_string($user_id1);
 $query = "DELETE FROM users WHERE id = '$user_id1'";
 $result = pg_query($dbconn, $query);
 
+include('ListUsers.php');
+
 if ($result) {
     echo "Пользователь успешно удален.";
 } else {
