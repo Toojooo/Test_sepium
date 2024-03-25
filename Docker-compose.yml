@@ -5,7 +5,7 @@ services:
     image: mysql:latest
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: your_root_password
+      MYSQL_ROOT_PASSWORD: admin
       MYSQL_DATABASE: test_app
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin

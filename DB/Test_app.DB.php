@@ -1,4 +1,5 @@
 <?php
+
 // Подключение к базе данных
 require_once('db.php');
 
@@ -21,11 +22,10 @@ $query = "INSERT INTO users (name, email, password, created_at) VALUES ('$name',
 $result = mysqli_query($dbconn, $query);
 
 if ($result) {
-    echo "Пользователь успешно создан.";
+echo "Пользователь успешно создан.";
 } else {
-    echo "Ошибка при создании пользователя: " . mysqli_error($dbconn);
+echo "Ошибка при создании пользователя: " . mysqli_error($dbconn);
 }
 
 // Закрытие соединения с базой данных
 mysqli_close($dbconn);
-

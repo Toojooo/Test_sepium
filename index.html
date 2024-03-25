@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sepium</title>
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 </head>
 <body>
 
@@ -37,7 +38,7 @@
     <form id="deleteForm" method="post">
         <label for="user_id1">ID пользователя:</label><br>
         <input type="text" id="user_id1" name="user_id1"><br><br>
-        <input type="submit" value="Удалить">
+        <input type="submit" value="Удалить" OnClick="return deleteSubmit();">
     </form>
 
     <!-- Этот элемент будет обновлен после удаления пользователя -->
@@ -46,7 +47,7 @@
 </div>
 
 <script>
-    document.getElementById('deleteForm').onsubmit = function(e) {
+    /*document.getElementById('deleteForm').onsubmit = function(e) {
         e.preventDefault();
 
         var userId = document.getElementById('user_id1').value;
@@ -62,7 +63,31 @@
                 document.getElementById('userList').innerHTML = html;
             })
             .catch(error => console.error('Error:', error));
-    };
+    };*/
+
+
+    function deleteSubmit(){
+
+        if(jQuery("#user_id1").val() == ''){
+
+            jQuery("#user_id1").focus();
+            alert('Введите ID пользователя для удаления');
+            return false;
+        }
+
+        jQuery.ajax({
+            type: "POST",
+            url: 'DB/Delete.php',
+            data: jQuery("#deleteForm").serialize(),
+            async: true,
+            success: function(data) {
+                alert(data);
+            },
+            error:  function(){
+            }
+        });
+        return false;
+    }
 </script>
 
 </body>
