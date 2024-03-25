@@ -1,32 +1,15 @@
-version: '3.1'
+version: '3'
 
 services:
-  db:
-    image: mysql:5.7
-    volumes:
-      - db_data:/var/lib/mysql
+  mysql:
+    image: mysql:latest
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: your_root_password
       MYSQL_DATABASE: test_app
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
     ports:
       - "3306:3306"
-
-  web:
-    build:
-      context: .
-      dockerfile: Dockerfile # Убедитесь, что Dockerfile находится в корневой директории
-    depends_on:
-      - db
-    ports:
-      - "8000:80"
-    environment:
-      DB_HOST: db
-      DB_NAME: test_app
-      DB_USER: user
-      DB_PASSWORD: password
-
-volumes:
-  db_data:
+    volumes:
+      - ./mysql-data:/var/lib/mysql
