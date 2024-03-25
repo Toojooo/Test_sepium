@@ -12,8 +12,6 @@ $user_id1 = mysqli_real_escape_string($dbconn, $user_id1);
 $query = "DELETE FROM users WHERE id = '$user_id1'";
 $result = mysqli_query($dbconn, $query);
 
-include('ListUsers.php');
-
 if ($result) {
     echo "Пользователь успешно удален.";
 } else {
