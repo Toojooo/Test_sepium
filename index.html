@@ -12,33 +12,37 @@
 
 <div class="container">
 
-<h1>Создать пользователя</h1>
+    <h1>Создать пользователя</h1>
 
-<form action="DB/Test_app.DB.php" method="post">
-    <label for="name">Имя пользователя:</label><br>
-    <input type="text" id="name" name="name"><br>
-    <label for="email">Email:</label><br>
-    <input type="email" id="email" name="email"><br>
-    <label for="password">Пароль:</label><br>
-    <input type="password" id="password" name="password"><br><br>
-    <input type="submit" value="Создать">
-</form>
+    <form action="DB/Test_app.DB.php" method="post">
+        <label for="name">Имя пользователя:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email"><br>
+        <label for="password">Пароль:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+        <input type="submit" value="Создать">
+    </form>
 
-<h1>Чтение пользователя по ID</h1>
+    <h1>Чтение пользователя по ID</h1>
 
-<form action="DB/Read.php" method="get">
-    <label for="user_id">ID пользователя:</label><br>
-    <input type="text" id="user_id" name="user_id"><br><br>
-    <input type="submit" value="Найти">
-</form>
+    <form action="DB/Read.php" method="get">
+        <label for="user_id">ID пользователя:</label><br>
+        <input type="text" id="user_id" name="user_id"><br><br>
+        <input type="submit" value="Найти">
+    </form>
 
-<h1>Удаление пользователя по ID</h1>
+    <h1>Удаление пользователя по ID</h1>
 
-<form action="DB/Delete.php" method="post">
-    <label for="user_id">ID пользователя:</label><br>
-    <input type="text" id="user_id1" name="user_id1"><br><br>
-    <input type="submit" value="Удалить">
-</form>
+    <form id="deleteForm" method="post">
+        <label for="user_id1">ID пользователя:</label><br>
+        <input type="text" id="user_id1" name="user_id1"><br><br>
+        <input type="submit" value="Удалить">
+    </form>
+
+    <!-- Этот элемент будет обновлен после удаления пользователя -->
+    <div id="userList"></div>
+
 </div>
 
 <script>
@@ -60,8 +64,6 @@
             .catch(error => console.error('Error:', error));
     };
 </script>
-
-
 
 </body>
 </html>

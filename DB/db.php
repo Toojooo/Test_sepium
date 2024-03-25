@@ -1,15 +1,14 @@
 <?php
 
 $servername = "localhost";
-$username = "root";
-$password = "root";
+$username = "admin";
+$password = "admin";
 $dbname = "test_app";
 
 // Соединение с базой данных
-$dbconn = pg_connect("host=$servername dbname=$dbname user=$username password=$password");
+$dbconn = mysqli_connect($servername, $username, $password, $dbname);
 
 // Проверка соединения
 if (!$dbconn) {
-    die("Connection failed: " . pg_last_error());
+    die("Connection failed: " . mysqli_connect_error());
 }
-
